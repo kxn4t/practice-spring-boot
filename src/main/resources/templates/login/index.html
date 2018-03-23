@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="jp" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css"
+	href="semantic/dist/semantic.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"
+	integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+	crossorigin="anonymous"></script>
+<script src="semantic/dist/semantic.min.js"></script>
+<style type="text/css">
+body {
+	background-color: #DADADA;
+}
+
+body>.grid {
+	height: 100%;
+}
+
+.column {
+	max-width: 500px;
+}
+</style>
+<title>ログイン</title>
+</head>
+<body>
+	<div class="ui middle aligned center aligned grid">
+		<div class="column">
+
+				<div class="ui error message" th:if="${param.containsKey('error')}">
+					ユーザ名またはパスワードが違います。
+				</div>
+
+			<form class="ui large form" method="post" th:action="@{'/login'}">
+				<div class="ui segment">
+
+					<div class="field">
+						<div class="ui left icon input">
+							<i class="user icon"></i> <input type="text" name="userid"
+								placeholder="ユーザID">
+						</div>
+					</div>
+
+					<div class="field">
+						<div class="ui left icon input">
+							<i class="lock icon"></i> <input type="password" name="password"
+								placeholder="パスワード">
+						</div>
+					</div>
+
+					<button type="submit" class="ui fluid large primary button">ログイン</button>
+
+					<div class="ui horizontal divider">または</div>
+
+					<a class="ui fluid primary basic button" th:href="@{/regist}">新規登録</a>
+				</div>
+
+			</form>
+		</div>
+	</div>
+</body>
+</html>
